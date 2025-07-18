@@ -1,6 +1,5 @@
 from django.urls import path
 
-from . import views
 from .apps import MailingServiceConfig
 from .views import RecipientCreateView, RecipientListView, RecipientDeleteView, RecipientDetailView, \
     RecipientUpdateView, MessageListView, MessageCreateView, MessageDeleteView, MessageDetailView, MessageUpdateView, \

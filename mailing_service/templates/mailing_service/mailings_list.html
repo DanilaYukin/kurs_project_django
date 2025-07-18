@@ -15,6 +15,12 @@
                 <p class="card-text">{{ mailing.start_datetime }}</p>
                 <a href="{% url 'mailing_service:mailing_detail' mailing.pk %}" class="btn btn-primary">Посмотреть</a>
                 <a href="{% url 'mailing_service:mailing_send' mailing.pk %}" class="btn btn-secondary">Отправить</a>
+                {% if user.is_manager %}
+                <form method="post" action="{% url 'mailing_service:disable_mailing' mailing.pk %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-warning btn-sm">Отключить</button>
+                </form>
+                {% endif %}
             </div>
         </div>
     </div>

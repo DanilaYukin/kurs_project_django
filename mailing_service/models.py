@@ -1,7 +1,7 @@
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail
 from django.db import models
 from django.utils import timezone
-import smtplib
+from users.models import CustomUser
 
 
 class Recipient(models.Model):
@@ -43,6 +43,8 @@ class Mailing(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Создана')
     message = models.ForeignKey(Message, on_delete=models.CASCADE)
     recipients = models.ManyToManyField(Recipient)
+    owner = models.ForeignKey(CustomUser, verbose_name='владелец рассылки', blank=True, null=True,
+                              on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'Рассылка #{self.id}'
