@@ -4,6 +4,13 @@
 {% include 'mailing_service/header.html' %}
 <body>
 {% block content %}
+<h1>Статистика рассылок</h1>
+
+<ul>
+    <li>Общее количество рассылок: {{ total_mailings }}</li>
+    <li>Активные рассылки (Запущена): {{ active_mailings }}</li>
+    <li>Уникальных получателей: {{ unique_recipients }}</li>
+</ul>
 {% endblock %}
 <script src="/static/js/bootstrap.bundle.min.js"></script>
 </body>
